@@ -1,14 +1,18 @@
 #!/bin/sh
 
+# Directories
 bkp_dir='originals'
 dotfiles_dir='dotfiles'
 
+# Files
 xresources=Xresources
 xinit=xinitrc
 tmux=tmux.conf
 vim=vimrc
 zsh=zshrc
+gitconfig=gitconfig
 
+# Create backup directory if non existent
 if [ ! -d "$bkp_dir" ]; then
   mkdir $bkp_dir
 fi
@@ -42,3 +46,10 @@ if [ -f "$HOME/.$zsh" ]; then
   mv "$HOME/.$zsh" ./$bkp_dir                                                                                                                                                             
 fi                                                                                                                                                                                               
 ln -s $dotfiles_dir/$zsh $HOME/.$zsh  
+
+# gitconfig                                                                                                                                                                    
+if [ -f "$HOME/.$gitconfig" ]; then
+  mv "$HOME/.$gitconfig" ./$bkp_dir
+fi
+ln -s $dotfiles_dir/$gitconfig $HOME/.$gitconfig
+
