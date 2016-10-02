@@ -3,6 +3,7 @@
 # Directories
 bkp_dir='originals'
 dotfiles_dir='dotfiles'
+config_dir="$HOME/.config"
 
 # Files
 xresources=Xresources
@@ -11,6 +12,7 @@ tmux=tmux.conf
 vim=vimrc
 zsh=zshrc
 gitconfig=gitconfig
+cmus=cmus/rc
 
 # Create backup directory if non existent
 if [ ! -d "$bkp_dir" ]; then
@@ -53,3 +55,8 @@ if [ -f "$HOME/.$gitconfig" ]; then
 fi
 ln -s $dotfiles_dir/$gitconfig $HOME/.$gitconfig
 
+# cmus config                                                                                                                                                             
+if [ -f "$config_dir/$cmus" ]; then                                                                                                                                      
+  mv "$config_dir/$cmus" ./$bkp_dir                                                                                                                                      
+fi                                                                                                                                                                       
+ln -s $HOME/$dotfiles_dir/rc $config_dir/$cmus
