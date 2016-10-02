@@ -1,0 +1,44 @@
+#!/bin/sh
+
+bkp_dir='originals'
+dotfiles_dir='dotfiles'
+
+xresources=Xresources
+xinit=xinitrc
+tmux=tmux.conf
+vim=vimrc
+zsh=zshrc
+
+if [ ! -d "$bkp_dir" ]; then
+  mkdir $bkp_dir
+fi
+
+# Xresources
+if [ -f "$HOME/.$xresources" ]; then
+	mv "$HOME/.$xresources" ./$bkp_dir
+fi
+ln -s $dotfiles_dir/$xresources $HOME/.$xresources
+
+# xinit                                                                                                                                                                           
+if [ -f "$HOME/.$xinit" ]; then                                                                                                                                                             
+  mv "$HOME/.$xinit" ./$bkp_dir                                                                                                                                                             
+fi                                                                                                                                                                                               
+ln -s $dotfiles_dir/$xinit $HOME/.$xinit
+
+# tmux                                                                                                                                                                            
+if [ -f "$HOME/.$tmux" ]; then                                                                                                                                                             
+  mv "$HOME/.$tmux" ./$bkp_dir                                                                                                                                                             
+fi                                                                                                                                                                                               
+ln -s $dotfiles_dir/$tmux $HOME/.$tmux
+
+# vim                                                                                                                                                                             
+if [ -f "$HOME/.$vim" ]; then                                                                                                                                                             
+  mv "$HOME/.$vim" ./$bkp_dir                                                                                                                                                             
+fi                                                                                                                                                                                               
+ln -s $dotfiles_dir/$vim $HOME/.$vim  
+
+# zsh                                                                                                                                                                             
+if [ -f "$HOME/.$zsh" ]; then                                                                                                                                                             
+  mv "$HOME/.$zsh" ./$bkp_dir                                                                                                                                                             
+fi                                                                                                                                                                                               
+ln -s $dotfiles_dir/$zsh $HOME/.$zsh  
