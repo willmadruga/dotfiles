@@ -91,3 +91,5 @@ export PATH=$PATH:$JAVA_HOME/bin
 
 alias bup="xbacklight -inc 10 && echo 'Brightness is: ' && cat /sys/class/backlight/intel_backlight/brightness"
 alias bdown="xbacklight -dec 10 && echo 'Brightness is: ' && cat /sys/class/backlight/intel_backlight/brightness"
+
+alias batt="sudo tlp-stat -b"
