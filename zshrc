@@ -93,3 +93,5 @@ alias bup="xbacklight -inc 10 && echo 'Brightness is: ' && cat /sys/class/backli
 alias bdown="xbacklight -dec 10 && echo 'Brightness is: ' && cat /sys/class/backlight/intel_backlight/brightness"
 
 alias batt="sudo tlp-stat -b"
+
+alias mplayer="cmus"
