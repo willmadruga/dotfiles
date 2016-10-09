@@ -1,5 +1,14 @@
 #!/bin/sh
 
+#
+# dotfiles loader
+#
+# Author: William Madruga <willmadruga@gmail.com>
+# 
+# 1. backup original dotfile - just in case (useless for what is already linked)
+# links repo dotfiles to its original location 
+#
+
 # Directories
 bkp_dir='originals'
 dotfiles_dir='dotfiles'
@@ -14,7 +23,7 @@ zsh=zshrc
 gitconfig=gitconfig
 cmus=cmus/rc
 
-# Create backup directory if non existent
+# Create backup directory if doesn't exist
 if [ ! -d "$bkp_dir" ]; then
   mkdir $bkp_dir
 fi
