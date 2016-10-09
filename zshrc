@@ -87,11 +87,13 @@ export LANG=en_CA.UTF-8
 # Setting up Docker-copied JDK 
 # gist.github.com/wmadruga
 export JAVA_HOME=$HOME/devel/java-8-openjdk-amd64
-export PATH=$PATH:$JAVA_HOME/bin
+export GOPATH=~/go
+export PATH=$PATH:$JAVA_HOME/bin:$GOPATH/bin
+
+export VISUAL="vim"
 
 alias bup="xbacklight -inc 10 && echo 'Brightness is: ' && cat /sys/class/backlight/intel_backlight/brightness"
 alias bdown="xbacklight -dec 10 && echo 'Brightness is: ' && cat /sys/class/backlight/intel_backlight/brightness"
-
 alias batt="sudo tlp-stat -b"
-
 alias mplayer="cmus"
+alias youtube-dl="docker run --rm -v /home/wmadruga/data/youtube-dl:/data youtube-dl"
