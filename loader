@@ -22,6 +22,7 @@ vim=vimrc
 zsh=zshrc
 gitconfig=gitconfig
 cmus=cmus/rc
+i3config=i3/config
 
 # Create backup directory if doesn't exist
 if [ ! -d "$bkp_dir" ]; then
@@ -68,4 +69,10 @@ ln -s $dotfiles_dir/$gitconfig $HOME/.$gitconfig
 if [ -f "$config_dir/$cmus" ]; then                                                                                                                                      
   mv "$config_dir/$cmus" ./$bkp_dir                                                                                                                                      
 fi                                                                                                                                                                       
-ln -s $HOME/$dotfiles_dir/rc $config_dir/$cmus
+ln -s $HOME/$dotfiles_dir/cmus_rc $config_dir/$cmus
+
+# i3 config
+if [ -f "$config_dir/$i3config" ]; then                                                                               
+	mv "$config_dir/$i3config" ./$bkp_dir                                                                               
+fi                                                                                                                
+ln -s $HOME/$dotfiles_dir/i3_config $config_dir/$i3config       
