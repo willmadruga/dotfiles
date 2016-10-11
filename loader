@@ -24,6 +24,7 @@ gitconfig=gitconfig
 cmus=cmus/rc
 i3config=i3/config
 i3status_config=i3status/config
+conky=conky/conky.conf
 
 # Create backup directory if doesn't exist
 if [ ! -d "$bkp_dir" ]; then
@@ -32,54 +33,60 @@ fi
 
 # Xresources
 if [ -f "$HOME/.$xresources" ]; then
-	mv "$HOME/.$xresources" ./$bkp_dir
+	unlink $HOME/.$xresources || mv "$HOME/.$xresources" ./$bkp_dir
 fi
 ln -s $dotfiles_dir/$xresources $HOME/.$xresources
 
 # xinit                                                                                                                                                                           
 if [ -f "$HOME/.$xinit" ]; then                                                                                                                                                             
-  mv "$HOME/.$xinit" ./$bkp_dir                                                                                                                                                             
+  unlink $HOME/.$xinit || mv "$HOME/.$xinit" ./$bkp_dir                                                                                                                                                             
 fi                                                                                                                                                                                               
 ln -s $dotfiles_dir/$xinit $HOME/.$xinit
 
 # tmux                                                                                                                                                                            
 if [ -f "$HOME/.$tmux" ]; then                                                                                                                                                             
-  mv "$HOME/.$tmux" ./$bkp_dir                                                                                                                                                             
+  unlink $HOME/.$tmux || mv "$HOME/.$tmux" ./$bkp_dir                                                                                                                                                             
 fi                                                                                                                                                                                               
 ln -s $dotfiles_dir/$tmux $HOME/.$tmux
 
 # vim                                                                                                                                                                             
 if [ -f "$HOME/.$vim" ]; then                                                                                                                                                             
-  mv "$HOME/.$vim" ./$bkp_dir                                                                                                                                                             
+  unlink $HOME/.$vim || mv "$HOME/.$vim" ./$bkp_dir                                                                                                                                                             
 fi                                                                                                                                                                                               
 ln -s $dotfiles_dir/$vim $HOME/.$vim  
 
 # zsh                                                                                                                                                                             
 if [ -f "$HOME/.$zsh" ]; then                                                                                                                                                             
-  mv "$HOME/.$zsh" ./$bkp_dir                                                                                                                                                             
+  unlink $HOME/.$zsh || mv "$HOME/.$zsh" ./$bkp_dir                                                                                                                                                             
 fi                                                                                                                                                                                               
 ln -s $dotfiles_dir/$zsh $HOME/.$zsh  
 
 # gitconfig                                                                                                                                                                    
 if [ -f "$HOME/.$gitconfig" ]; then
-  mv "$HOME/.$gitconfig" ./$bkp_dir
+  unlink $HOME/.$gitconfig || mv "$HOME/.$gitconfig" ./$bkp_dir
 fi
 ln -s $dotfiles_dir/$gitconfig $HOME/.$gitconfig
 
 # cmus config                                                                                                                                                             
 if [ -f "$config_dir/$cmus" ]; then                                                                                                                                      
-  mv "$config_dir/$cmus" ./$bkp_dir                                                                                                                                      
+  unlink $config_dir/$cmus || mv "$config_dir/$cmus" ./$bkp_dir                                                                                                                                      
 fi                                                                                                                                                                       
 ln -s $HOME/$dotfiles_dir/cmus_rc $config_dir/$cmus
 
 # i3 config
 if [ -f "$config_dir/$i3config" ]; then                                                                               
-	mv "$config_dir/$i3config" ./$bkp_dir                                                                               
+	unlink $config_dir/$i3config || mv "$config_dir/$i3config" ./$bkp_dir                                                                               
 fi                                                                                                                
 ln -s $HOME/$dotfiles_dir/i3_config $config_dir/$i3config
 
 # i3status config
 if [ -f "$config_dir/$i3status_config" ]; then                                                                                                                                   
-  mv "$config_dir/$i3status_config" ./$bkp_dir                                                                                                                                   
+  unlink $config_dir/$i3status_config || mv "$config_dir/$i3status_config" ./$bkp_dir                                                                                                                                   
 fi                                                                                                                                                                        
 ln -s $HOME/$dotfiles_dir/i3status_config $config_dir/$i3status_config
+
+# conky config
+if [ -f "$config_dir/$conky" ]; then    
+  unlink $config_dir/$conky || mv "$config_dir/$conky" ./$bkp_dir
+fi    
+ln -s $HOME/$dotfiles_dir/conkyrc $config_dir/$conky
