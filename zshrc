@@ -88,7 +88,7 @@ export LANG=en_CA.UTF-8
 # gist.github.com/wmadruga
 export JAVA_HOME=$HOME/devel/java-8-openjdk-amd64
 export GOPATH=~/go
-export PATH=$PATH:$JAVA_HOME/bin:$GOPATH/bin
+export PATH=$PATH:$JAVA_HOME/bin:$GOPATH/bin:$HOME/bin
 
 export VISUAL="vim"
 
@@ -97,5 +97,11 @@ alias bdown="xbacklight -dec 10 && echo 'Brightness is: ' && cat /sys/class/back
 alias batt="sudo tlp-stat -b"
 alias bat0="cat /sys/class/power_supply/BAT0/uevent | grep CAPACITY"
 alias checkup="cylon"
-alias youtube-dl="docker run --rm -v /home/wmadruga/data/youtube-dl:/data youtube-dl"
+alias youtube-dl="docker run --rm -v $HOME/data/youtube-dl:/data youtube-dl"
 alias pdf="apvlv"
+
+# http://linrunner.de/en/tlp/docs/tlp-linux-advanced-power-management.html#installation
+function set-battery-threshold() {
+	sudo tpacpi-bat -s ST 0 60
+	sudo tpacpi-bat -s SP 0 80
+}
