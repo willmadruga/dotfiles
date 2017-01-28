@@ -100,6 +100,8 @@ alias checkup="cylon"
 alias youtube-dl="docker run --rm -v $HOME/data/youtube-dl:/data youtube-dl"
 alias pdf="apvlv"
 
+source $HOME/.hidden_functions
+
 # http://linrunner.de/en/tlp/docs/tlp-linux-advanced-power-management.html#installation
 function set-battery-threshold() {
 	sudo tpacpi-bat -s ST 0 60
